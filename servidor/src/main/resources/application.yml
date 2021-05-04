@@ -1,0 +1,15 @@
+server:
+  port: 8080
+  servlet.context-path: /api
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    password: federico
+    url: jdbc:mysql://localhost:3306/aune?useSSL=false&serverTimezone=America/Argentina/Buenos_Aires
+    username: root
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true

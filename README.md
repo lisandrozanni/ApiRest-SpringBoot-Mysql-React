@@ -24,6 +24,7 @@ Desde la consola, dentro de la carpeta `/servidor`, ejecur el siguiente comando:
 mvn spring-boot:run
 ```
 
+
 ## Visualizacion
 
 <img src="https://user-images.githubusercontent.com/65865555/117055498-957c9e00-acf1-11eb-8162-fe201c5904bb.png" >

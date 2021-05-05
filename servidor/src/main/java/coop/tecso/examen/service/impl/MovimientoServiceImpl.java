@@ -41,7 +41,7 @@ public class MovimientoServiceImpl implements MovimientoService {
 		}
 
 		CuentaCorriente ccVerificar = cc.get();
-		if (movimientoDto.getTipoMovimiento().equals(TipoMovimiento.DEBITO)) {
+		if (movimientoDto.getTipoMovimiento().equals(TipoMovimiento.CREDITO)) {
 			ccVerificar.setSaldo(ccVerificar.getSaldo().add(movimientoDto.getImporte()));
 		} else {
 			ccVerificar.setSaldo(ccVerificar.getSaldo().subtract(movimientoDto.getImporte()));

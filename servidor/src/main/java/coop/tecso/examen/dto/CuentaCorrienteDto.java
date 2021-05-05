@@ -20,13 +20,13 @@ public class CuentaCorrienteDto implements Serializable{
 
 	private static final long serialVersionUID = 3714376091138473277L;
 	
-	@Column(name="numeroCuenta",  length = 50, unique = true, nullable = false)
+	@Column(name="numeroCuenta", length = 50, nullable = false)
 	private Long numeroCuenta;
 	
-	@Column(name="moneda",  length = 100, nullable = false)
+	@Column(name="moneda", length = 100, nullable = false)
 	private String moneda;	
 	
-	@Column(name="saldo",  length = 100, nullable = false)
+	@Column(name="saldo", length = 100, nullable = false)
 	private BigDecimal saldo;
 	
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern="dd-MM-yyyy", timezone="America/Argentina/Buenos_Aires")

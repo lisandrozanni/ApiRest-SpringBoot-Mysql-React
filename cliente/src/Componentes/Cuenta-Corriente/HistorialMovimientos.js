@@ -45,7 +45,7 @@ const HistorialMovimientos = () => {
               <th scope="row">{index + 1}</th>
               <td>{hm.numeroCuenta}</td>
               <td>{hm.tipoMovimiento}</td>
-              <td>{hm.importe}</td>
+              <td>$ {hm.importe}</td>
               <td>{hm.descripcion}</td>
               <td>{hm.fechaCreacion}</td>
             </tr>

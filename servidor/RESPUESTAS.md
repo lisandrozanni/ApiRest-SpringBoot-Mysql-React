@@ -8,11 +8,9 @@
 	-d "{
    	     \"nombre\": \"nombre1\",
    	     \"apellido\": \"apellido2\",
-  	      \"rut\": \"223132\",
-		\"cuentaCorriente\": \"9541234\",
- 	       \"caracteristica\": \"tipo de titular\",
-		\"razon\": \"razon social\",
- 	       \"anio\": \"2021\"
+  	      \"rut\": \"22313\",
+		\"cuentaCorriente\": \"954134\",
+ 	       \"caracteristica\": \"titular fisico\"
 	}"
 
 
@@ -25,16 +23,14 @@
 
 
 ## Editar cuenta:
-	curl -X PUT "http://localhost:8080/api/titular/editar-titular/1"
+	curl -X PUT "http://localhost:8080/api/titular/editar-titular/2"
 	-H "Content-Type:application/json" -H "Accept:application/json"
 	-d "{
 		\"nombre\": \"nombre2\",
       	  \"apellido\": \"apellido3\",
-     	   \"cuentaCorriente\": \"9541234\",
-		\"rut\": \"223132\",
-    	    \"razon\": \"crear\",
-		\"anio\": \"2022\",
-        	\"caracteristica\": \"juridica\"
+     	   \"cuentaCorriente\": \"954134\",
+		\"rut\": \"22313\",
+        	\"caracteristica\": \"titular fisico\"
 	}"
 
 
@@ -53,7 +49,7 @@
 	}"
 
 
-## Visualizar cuenta Corriente:
+## Visualizar cuenta corriente:
 	curl -X GET "http://localhost:8080/api/cuenta/visualizar"
 
 
@@ -69,3 +65,7 @@
 
 ## Obtener todos los movimientos:
 	curl -X GET "http://localhost:8080/api/movimiento/lista"
+	
+	
+## Eliminar cuenta corriente:
+	curl -X DELETE "http://localhost:8080/api/cuenta/123456"

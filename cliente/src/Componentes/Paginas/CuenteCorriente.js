@@ -42,7 +42,7 @@ const CuenteCorriente = () => {
                 <th scope="row">{index + 1}</th>
                 <td>{cuentas.numeroCuenta}</td>
                 <td>{cuentas.moneda}</td>
-                <td>{cuentas.saldo}</td>
+                <td>$ {cuentas.saldo}</td>
                 <td>{cuentas.fechaCreacion}</td>
                 <td>
                   <Link

@@ -1,12 +1,12 @@
 package coop.tecso.examen.controller;
 
+import java.net.URISyntaxException;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -16,8 +16,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import coop.tecso.examen.dto.ResponseDto;
+import coop.tecso.examen.enums.EstadoResponse;
+import coop.tecso.examen.exception.ErroresFuncionales;
 import coop.tecso.examen.model.Titulares;
 import coop.tecso.examen.service.TitularesService;
 
@@ -32,8 +36,11 @@ public class TitularesController {
 	
 	
 	@PostMapping(value = "/crear-titular")
-	public ResponseEntity<?> create (@RequestBody Titulares titulares) {
-		return ResponseEntity.status(HttpStatus.CREATED).body(titularesService.save(titulares));
+	public @ResponseBody ResponseDto create (@RequestBody Titulares titulares) throws URISyntaxException {
+		ResponseDto response = new ResponseDto();
+		titularesService.save(titulares);
+		response = new ResponseDto(EstadoResponse.CREATED, "El titular se creo con exito!");
+		return response;
 	}
 	
 	
@@ -42,7 +49,7 @@ public class TitularesController {
 		Optional<Titulares> oUser = titularesService.findById(userId);
 		
 		if(!oUser.isPresent()) {
-			return ResponseEntity.notFound().build();
+			throw new ErroresFuncionales("El titular que desea buscar no existe");
 		}
 		
 		return ResponseEntity.ok(oUser);
@@ -50,11 +57,11 @@ public class TitularesController {
 	
 	
 	@PutMapping(value = "/editar-titular/{id}")
-	public ResponseEntity<?> update (@RequestBody Titulares titularesDetails, @PathVariable(value = "id") Long titularesDetailsId) {
+	public @ResponseBody ResponseDto update (@RequestBody Titulares titularesDetails, @PathVariable(value = "id") Long titularesDetailsId) {
 		Optional<Titulares> titulares = titularesService.findById(titularesDetailsId);
 		
 		if(!titulares.isPresent()) {
-			return ResponseEntity.notFound().build();
+			throw new ErroresFuncionales("El titular que desea editar no existe");
 		}
 		
 		
@@ -67,20 +74,24 @@ public class TitularesController {
 		titulares.get().setAnio(titularesDetails.getAnio());
 		
 		
-		return ResponseEntity.status(HttpStatus.CREATED).body(titularesService.save(titulares.get()));
+		ResponseDto response = new ResponseDto();
+		titularesService.save(titulares.get());
+		response = new ResponseDto(EstadoResponse.OK, "El titular modificado con exito!");
+		return response;
 		
 	}
 	
 	
 	@DeleteMapping(value = "/eliminar-titular/{id}")
-	public ResponseEntity<?> delete (@PathVariable(value = "id") Long titularesId) {
+	public @ResponseBody ResponseDto delete (@PathVariable(value = "id") Long titularesId) {
 		
 		if(!titularesService.findById(titularesId).isPresent()) {
-			return ResponseEntity.notFound().build();
+			throw new ErroresFuncionales("No se encontro el titular que desea eliminar");
 		}
-		
+		ResponseDto response = new ResponseDto();
 		titularesService.deleteById(titularesId);
-		return ResponseEntity.ok().body("Titular eliminado");
+		response = new ResponseDto(EstadoResponse.OK, "Titular eliminado con exito!");
+		return response;
 	}
 	
 	

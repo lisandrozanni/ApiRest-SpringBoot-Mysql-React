@@ -2,7 +2,6 @@ package coop.tecso.examen.service;
 
 import java.math.BigDecimal;
 import java.util.List;
-import java.util.Optional;
 
 
 import coop.tecso.examen.enums.Moneda;
@@ -16,10 +15,6 @@ public interface CuentaService {
 	
 	public List<CuentaCorriente> obtenerCuentasCorrientes();
 	
-	
-	public Optional<CuentaCorriente> findById(Long numeroCuenta);
-	
-	public void deleteById(Long numeroCuenta);
 
 }
 

@@ -27,7 +27,7 @@ public class MovimientoDto {
 	@Column(name="importe", nullable = false)
 	private BigDecimal importe;
 	
-	@Column(name="numeroCuenta", unique = true, nullable = false)
+	@Column(name="numeroCuenta", nullable = false)
 	private Long numeroCuenta;
 	
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern="dd-MM-yyyy HH:mm", timezone="America/Argentina/Buenos_Aires")
@@ -37,13 +37,13 @@ public class MovimientoDto {
 	
 	
 	
-	public MovimientoDto(Movimiento mov, Long numerocuenta){
+	public MovimientoDto(Movimiento mov, Long numeroCuenta){
 
 		this.tipoMovimiento = mov.getTipoMovimiento().toString();
 		this.fechaCreacion = mov.getFechaCreacion();
 		this.descripcion = mov.getDescripcion();
 		this.importe = mov.getImporte();
-		this.numeroCuenta = numerocuenta;
+		this.numeroCuenta = numeroCuenta;
 	}
 	
 	public MovimientoDto(Movimiento mov){

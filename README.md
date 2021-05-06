@@ -12,11 +12,6 @@ Dentro de la carpeta `/cliente`, instalamos todas las dependencias con el siguie
 npm install
 ```
 
-Luego, ejecutamos el comando para levantar en simultáneo el cliente y el servidor:
-```
-npm run app
-```
-
 
 ### Backend
 Desde la consola, dentro de la carpeta `/servidor`, ejecur el siguiente comando:
